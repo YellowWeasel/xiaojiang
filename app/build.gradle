@@ -19,6 +19,22 @@ android {
             enabled true
         }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("release-key.jks")
+            storePassword "a792eb97b3fb9a4e1bb6b22efc2482f7"
+            keyAlias "service-release-key"
+            keyPassword "a792eb97b3fb9a4e1bb6b22efc2482f7"
+        }
+        release {
+            storeFile file("release-key.jks")
+            storePassword "a792eb97b3fb9a4e1bb6b22efc2482f7"
+            keyAlias "service-release-key"
+            keyPassword "a792eb97b3fb9a4e1bb6b22efc2482f7"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
