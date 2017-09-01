@@ -1,12 +1,16 @@
 package com.funfunstyle.service.service;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.IBinder;
 import android.util.Log;
 
 import com.funfunstyle.service.BroadcastAction;
+import com.funfunstyle.service.R;
 import com.ibm.mqtt.IMqttClient;
 import com.ibm.mqtt.MqttAdvancedCallback;
 import com.ibm.mqtt.MqttClient;
@@ -15,6 +19,10 @@ import com.ibm.mqtt.MqttException;
 public class PushService extends Service {
 
     private final String TAG = getClass().getSimpleName();
+
+    private Notification notification;
+    private NotificationManager notificationManager;
+
     private static Context mContext;
     private volatile boolean runnig = false;
     private enum Action {
@@ -65,6 +73,7 @@ public class PushService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     }
 
     private void intMqttClient() throws MqttException {
@@ -104,6 +113,16 @@ public class PushService extends Service {
                     intent.setAction(BroadcastAction.MESSAGE.name());
                     intent.putExtra("data", new String(payload, "UTF-8"));
                     mContext.sendBroadcast(intent);
+                    notification = new Notification.Builder(getApplication())
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setContentTitle(getString(R.string.new_message))
+                            .setContentText(getString(R.string.please_pay_attention))
+                            .setSubText(getString(R.string.app_name))
+                            .setVibrate(new long[]{0, 100, 1000})
+                            .build();
+                    notification.sound = Uri.parse("Android.resource://" + getPackageName() + "/" + R.raw.new_call);
+                    notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(1, notification);
                 }
             });
 

@@ -2,4 +2,6 @@
     <string name="app_name">Service</string>
     <string name="title_scanning_qrcode">Scanning QR Code</string>
     <string name="service_push">Push Service</string>
+    <string name="new_message">New Message</string>
+    <string name="please_pay_attention">Please Pay Attention</string>
 </resources>
