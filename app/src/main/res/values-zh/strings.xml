@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">赏多多服务版</string>
     <string name="title_scanning_qrcode">扫描二维码</string>
+    <string name="service_push">推送服务</string>
 </resources>

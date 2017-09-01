@@ -17,12 +17,19 @@
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ScanActivity"
-            android:theme="@style/HasActionBar"></activity>
+            android:theme="@style/HasActionBar" />
+
+        <service
+            android:name=".service.PushService"
+            android:label="@string/service_push"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

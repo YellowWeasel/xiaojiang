@@ -1,8 +1,11 @@
-package com.funfunstyle.service;
+package com.funfunstyle.service.js;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.webkit.JavascriptInterface;
+
+import com.funfunstyle.service.Constants;
+import com.funfunstyle.service.ScanActivity;
 
 /**
  * Created by lovebing on 2017/9/1.
